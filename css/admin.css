@@ -1,0 +1,192 @@
+span.mce_horsetelex {
+    background-image: url("../images/horsetelex.png") !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+}
+
+
+/*------------------------------------------------------------------------------
+ wp-link
+------------------------------------------------------------------------------*/
+
+#horsetelex-link {
+	background-color: #F5F5F5;
+	line-height: 1.4em;
+	font-size: 12px;
+}
+
+#horsetelex-link ol,
+#horsetelex-link ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#horsetelex-link input[type="text"] {
+	-webkit-box-sizing: border-box;
+}
+
+#horsetelex-link input[type="text"],
+#horsetelex-link textarea {
+	border-width: 1px;
+	border-style: solid;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	font-size: 12px;
+	margin: 1px;
+	padding: 3px;
+}
+
+#horsetelex-link #horsetelex-options {
+	padding: 10px 0 14px;
+	border-bottom: 1px solid #dfdfdf;
+	margin: 0 6px 14px;
+}
+
+#horsetelex-link label input[type="text"] {
+	width: 360px;
+	margin-top: 5px;
+}
+
+#horsetelex-link label span {
+	display: inline-block;
+	width: 80px;
+	text-align: right;
+	padding-right: 5px;
+}
+
+#horsetelex-link .horsetelex-search-wrapper {
+	margin: 5px 6px 9px;
+	display: block;
+	overflow: hidden;
+}
+
+#horsetelex-link .horsetelex-search-wrapper img.waiting {
+	margin: 8px 1px 0 4px;
+
+	display: none;
+}
+
+#horsetelex-link .link-target {
+	width: auto;
+	padding: 3px 0 0;
+	margin: 0 0 0 87px;
+	font-size: 11px;
+}
+
+#horsetelex-link .query-results {
+	border: 1px #dfdfdf solid;
+	margin: 0 5px 5px;
+	background: #fff;
+	height: 185px;
+	overflow: auto;
+	position: relative;
+}
+
+#horsetelex-link li,
+#horsetelex-link .query-notice {
+	clear: both;
+	margin-bottom: 0;
+	border-bottom: 1px solid #f1f1f1;
+	color: #333;
+	padding: 4px 6px;
+	cursor: pointer;
+	position: relative;
+}
+
+#horsetelex-link li:hover {
+	background: #eaf2fa;
+	color: #151515;
+}
+
+#horsetelex-link li.unselectable {
+	border-bottom: 1px solid #dfdfdf;
+}
+
+#horsetelex-link li.unselectable:hover {
+	background: #fff;
+	cursor: auto;
+	color: #333;
+}
+
+#horsetelex-link li.selected {
+	background: #ddd;
+	color: #333;
+}
+
+#horsetelex-link li.selected .item-title {
+	font-weight: bold;
+}
+
+#horsetelex-link .item-title {
+	display: inline-block;
+	width: 80%;
+}
+
+#horsetelex-link .item-info {
+	text-transform: uppercase;
+	color: #666;
+	font-size: 11px;
+	position: absolute;
+	right: 5px;
+	top: 4px;
+	bottom: 0;
+}
+
+#horsetelex-link  #search-panel {
+	float: left;
+	width: 100%;
+}
+
+#horsetelex-link .river-waiting {
+	display: none;
+	padding: 10px 0;
+}
+
+#horsetelex-link .river-waiting img.waiting {
+	margin: 0 auto;
+	display: block;
+}
+
+#horsetelex-link .submitbox {
+	padding: 5px 10px;
+	font-size: 11px;
+	overflow: auto;
+	height: 29px;
+}
+
+#horsetelex-link-cancel {
+	line-height: 25px;
+	float: left;
+}
+
+#horsetelex-link-update {
+	line-height: 23px;
+	float: right;
+}
+
+/**
+ * Results table
+ */
+#horsetelex-search-results table {
+	border-collapse: collapse;
+
+	width: 100%;
+}
+
+#horsetelex-search-results tr {
+	cursor: pointer;
+}
+
+#horsetelex-search-results tbody tr:hover {
+	background: #EAF2FA;
+}
+
+#horsetelex-search-results th , 
+#horsetelex-search-results td {
+	border-bottom: 1px solid #F1F1F1;
+
+	padding: 4px 6px;
+
+	text-align: left;	
+}
