@@ -21,12 +21,12 @@ function horsetelex_admin_enqueue_scripts(){
 
 	wp_enqueue_script( 'horsetelex_link', plugins_url( 'js/admin.js', __FILE__ ) );
 
-	wp_enqueue_script('wpdialogs-popup');
+	wp_enqueue_script( 'wpdialogs-popup' );
 
-	wp_enqueue_style('wp-jquery-ui-dialog');
+	wp_enqueue_style( 'wp-jquery-ui-dialog' );
 }
 
-add_action('admin_enqueue_scripts', 'horsetelex_admin_enqueue_scripts');
+add_action( 'admin_enqueue_scripts', 'horsetelex_admin_enqueue_scripts' );
 
 function horsetelex_management_page() {
 	?>
@@ -34,33 +34,33 @@ function horsetelex_management_page() {
 		<?php screen_icon(); ?>
 
 		<h2>
-			<?php _e('Horsetelex', 'horsetelex'); ?>
+			<?php _e( 'Horsetelex', 'horsetelex' ); ?>
 		</h2>
 
 		<?php 
 		
 		$url = 'http://www.horsetelex.nl/horses/jsonsearch';
 
-		$response = wp_remote_post($url, array(
+		$response = wp_remote_post( $url, array(
 			'body' => array( 
-				'names' => 'Totilas' , // Naam 
-				's' => '' , // Vader
-				'd' => '' , // Moeder
-				'ds' => '' , // Moeders vader
-				'reg' => '' , // Stamboek nummer
-				'year' => '' , // Jaar
+				'names'    => 'Totilas', // Naam 
+				's'        => '', // Vader
+				'd'        => '', // Moeder
+				'ds'       => '', // Moeders vader
+				'reg'      => '', // Stamboek nummer
+				'year'     => '', // Jaar
 				'studbook' => '' // Stamboek
 			),
-		));
+		) );
 
-		if( is_wp_error( $response ) ) {
+		if ( is_wp_error( $response ) ) {
 			echo 'Something went wrong!';
 		} else {		
 			$body = $response['body'];
 
-			$data = json_decode($body);
+			$data = json_decode( $body );
 
-			var_dump($data);
+			var_dump( $data );
 		}
 
 		?>
@@ -81,34 +81,34 @@ function horsetelex_admin_menu() {
 add_action( 'admin_menu', 'horsetelex_admin_menu' );
 
 function horsetelex_init() {
-	$relPath = dirname(plugin_basename(__FILE__)) . '/languages/';
+	$rel_path = dirname( plugin_basename( __FILE__ ) ) . '/languages/';
 
-	load_plugin_textdomain('horsetelex', false, $relPath);
+	load_plugin_textdomain( 'horsetelex', false, $rel_path );
 
 	// Don't bother doing this stuff if the current user lacks permissions
-	if ( ! current_user_can('edit_posts') && ! current_user_can('edit_pages') )
+	if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) )
 		return;
  
 	// Add only in Rich Editor mode
-	if ( get_user_option('rich_editing') == 'true' ) {
-		add_filter('mce_external_plugins', 'horsetelex_tinymce_plugin');
-		add_filter('mce_buttons', 'horsetelex_mce_buttons');
+	if ( get_user_option( 'rich_editing' ) == 'true' ) {
+		add_filter( 'mce_external_plugins', 'horsetelex_tinymce_plugin' );
+		add_filter( 'mce_buttons', 'horsetelex_mce_buttons' );
    }
 }
  
 function horsetelex_mce_buttons($buttons) {
-	array_push($buttons, 'separator', 'horsetelex');
+	array_push( $buttons, 'separator', 'horsetelex' );
 
 	return $buttons;
 }
  
 function horsetelex_tinymce_plugin($plugin_array) {
-	$plugin_array['horsetelex'] = plugins_url('tinymce/horsetelex/editor_plugin.js', __FILE__);
+	$plugin_array['horsetelex'] = plugins_url( 'tinymce/horsetelex/editor_plugin.js', __FILE__ );
 
 	return $plugin_array;
 }
 
-add_action('init', 'horsetelex_init');
+add_action( 'init', 'horsetelex_init' );
 
 //
 
@@ -177,70 +177,74 @@ function horsetelex_after_wp_tiny_mce( $mce_settings ) {
 	horsetelex_link_dialog();
 }
 
-add_action('after_wp_tiny_mce', 'horsetelex_after_wp_tiny_mce');
+add_action( 'after_wp_tiny_mce', 'horsetelex_after_wp_tiny_mce' );
 
 function horsetelex_wp_ajax_search() {
 	$url = 'http://www.horsetelex.nl/horses/jsonsearch';
 
-	$names = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
-	$father = filter_input(INPUT_POST, 'father', FILTER_SANITIZE_STRING);
+	$names = filter_input( INPUT_POST, 'name', FILTER_SANITIZE_STRING );
+	$father = filter_input( INPUT_POST, 'father', FILTER_SANITIZE_STRING );
 
 	$response = wp_remote_post($url, array(
 		'body' => array( 
-			'names' => $names , // Naam 
-			's' => $father , // Vader
-			'd' => '' , // Moeder
-			'ds' => '' , // Moeders vader
-			'reg' => '' , // Stamboek nummer
-			'year' => '' , // Jaar
-			'studbook' => '' , // Stamboek 
-			'page' => '0' 
+			'names'    => $names, // Naam 
+			's'        => $father, // Vader
+			'd'        => '', // Moeder
+			'ds'       => '', // Moeders vader
+			'reg'      => '', // Stamboek nummer
+			'year'     => '', // Jaar
+			'studbook' => '', // Stamboek 
+			'page'     => '0' 
 		),
 	));
 
-	if( is_wp_error( $response ) ) {
+	if ( is_wp_error( $response ) ) {
 		echo 'Something went wrong!';
 	} else {		
 		$body = $response['body'];
 
 		$data = json_decode($body);
 
-		if( is_array($data) ) {
-			array_shift($data);
+		if ( is_array( $data ) ) {
+			array_shift( $data );
 	
 			?>
 			<table>
 				<thead>
 					<tr>
-						<th scope="col"><?php _e('Name', 'horsetelex'); ?></th>
-						<th scope="col"><?php _e('Father', 'horsetelex'); ?></th>
-						<th scope="col"><?php _e('Mother', 'horsetelex'); ?></th>
-						<th scope="col"><?php _e('Mothers father', 'horsetelex'); ?></th>
-						<th scope="col"><?php _e('Year', 'horsetelex'); ?></th>
+						<th scope="col"><?php _e( 'Name', 'horsetelex' ); ?></th>
+						<th scope="col"><?php _e( 'Father', 'horsetelex' ); ?></th>
+						<th scope="col"><?php _e( 'Mother', 'horsetelex' ); ?></th>
+						<th scope="col"><?php _e( 'Mothers father', 'horsetelex' ); ?></th>
+						<th scope="col"><?php _e( 'Year', 'horsetelex' ); ?></th>
 						
 					</tr>
 				</thead>
 
 				<tbody>
-					<?php foreach($data as $row): ?>
-					<tr>
-						<td>
-							<a href="http://www.horsetelex.nl/horses/pedigree/<?php echo $row->id; ?>"><?php echo $row->name; ?></a>
-						</td>
-						<td>
-							 <?php echo $row->s_name; ?>
-						</td>
-						<td>
-							 <?php echo $row->d_name; ?>
-						</td>
-						<td>
-							 <?php echo $row->ds_name; ?>
-						</td>
-						<td>
-							 <?php echo $row->year; ?>
-						</td>
-					</tr>
+
+					<?php foreach ( $data as $row ) : ?>
+
+						<tr>
+							<td>
+								<a href="http://www.horsetelex.nl/horses/pedigree/<?php echo $row->id; ?>"><?php echo $row->name; ?></a>
+							</td>
+							<td>
+								 <?php echo $row->s_name; ?>
+							</td>
+							<td>
+								 <?php echo $row->d_name; ?>
+							</td>
+							<td>
+								 <?php echo $row->ds_name; ?>
+							</td>
+							<td>
+								 <?php echo $row->year; ?>
+							</td>
+						</tr>
+
 					<?php endforeach; ?>
+
 				</tbody>
 			</table>
 			<?php 
