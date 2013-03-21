@@ -28,6 +28,16 @@ function horsetelex_admin_enqueue_scripts(){
 
 add_action( 'admin_enqueue_scripts', 'horsetelex_admin_enqueue_scripts' );
 
+function horsetelex_get_host_name() {
+	$host_name = 'www.horsetelex.com';
+
+	if ( get_option( 'WPLANG', WPLANG ) == 'nl_NL' ) {
+		$host_name = 'www.horsetelex.nl';
+	}
+
+	return $host_name;
+}
+
 function horsetelex_management_page() {
 	?>
 	<div class="wrap">
@@ -39,7 +49,7 @@ function horsetelex_management_page() {
 
 		<?php 
 		
-		$url = 'http://www.horsetelex.nl/horses/jsonsearch';
+		$url = sprintf( 'http://%s/horses/jsonsearch', horsetelex_get_host_name() );
 
 		$response = wp_remote_post( $url, array(
 			'body' => array( 
@@ -180,7 +190,7 @@ function horsetelex_after_wp_tiny_mce( $mce_settings ) {
 add_action( 'after_wp_tiny_mce', 'horsetelex_after_wp_tiny_mce' );
 
 function horsetelex_wp_ajax_search() {
-	$url = 'http://www.horsetelex.nl/horses/jsonsearch';
+	$url = sprintf( 'http://%s/horses/jsonsearch', horsetelex_get_host_name() );
 
 	$names = filter_input( INPUT_POST, 'name', FILTER_SANITIZE_STRING );
 	$father = filter_input( INPUT_POST, 'father', FILTER_SANITIZE_STRING );
@@ -226,8 +236,17 @@ function horsetelex_wp_ajax_search() {
 					<?php foreach ( $data as $row ) : ?>
 
 						<tr>
+							<?php 
+							
+							$url = sprintf(
+								'http://%s/horses/pedigree/%s',
+								horsetelex_get_host_name(),
+								$row->id
+							);
+							
+							?>
 							<td>
-								<a href="http://www.horsetelex.nl/horses/pedigree/<?php echo $row->id; ?>"><?php echo $row->name; ?></a>
+								<a href="<?php echo $url; ?>"><?php echo $row->name; ?></a>
 							</td>
 							<td>
 								 <?php echo $row->s_name; ?>
