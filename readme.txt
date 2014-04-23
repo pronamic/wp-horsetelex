@@ -20,10 +20,10 @@ WordPress installation and then activate the Plugin from Plugins page.
 == Changelog ==
 
 = 0.1.1 =
-*	Open Horsetelex links by default in a new window/tab
+*	Open Horsetelex links by default in a new window/tab.
 
 = 0.1 =
-*	Initial release
+*	Initial release.
 
 
 == Links ==

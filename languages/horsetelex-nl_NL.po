@@ -1,86 +1,100 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pronamic Companies\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-25 11:50+0100\n"
-"PO-Revision-Date: 2012-07-25 11:50+0100\n"
-"Last-Translator: Remco Tolsma <remco@pronamic.nl>\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/horsetelex\n"
+"POT-Creation-Date: 2014-04-23 13:39:12+00:00\n"
+"PO-Revision-Date: 2014-04-23 15:39+0100\n"
+"Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;__ngettext:1,2;__withdesc;_ewithdesc;_c;_n_noop:1,2;__ngettext_noop:1,2;_x:2c,1;_nc:1,2;esc_attr_e;esc_html_e;esc_attr__;_nx:4c,1,2;_nx_noop:4c,1,2;esc_html_x:2c,1;esc_html__;_ex:2c,1\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;__ngettext:1,2;__withdesc;_ewithdesc;_c;"
+"_n_noop:1,2;__ngettext_noop:1,2;_x:2c,1;_nc:1,2;esc_attr_e;esc_html_e;"
+"esc_attr__;_nx:4c,1,2;_nx_noop:4c,1,2;esc_html_x:2c,1;esc_html__;_ex:2c,1\n"
 "X-Poedit-Basepath: ../\n"
-"X-Poedit-Language: Dutch\n"
-"X-Poedit-Country: NETHERLANDS\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.6.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: horsetelex.php:37
-#: horsetelex.php:73
-#: horsetelex.php:74
+#. Plugin Name of the plugin/theme
 msgid "Horsetelex"
 msgstr "Horsetelex"
 
-#: horsetelex.php:120
+#: horsetelex.php:134
 msgid "Enter the destination URL"
 msgstr "Geef de URL van de bestemming"
 
-#: horsetelex.php:124
+#: horsetelex.php:138
 msgid "URL"
 msgstr "URL"
 
-#: horsetelex.php:127
+#: horsetelex.php:141
 msgid "Title"
 msgstr "Titel"
 
-#: horsetelex.php:130
+#: horsetelex.php:144
 msgid "Open link in a new window/tab"
 msgstr "Open link in een nieuw venster/tab"
 
-#: horsetelex.php:139
-#: horsetelex.php:141
+#: horsetelex.php:153 horsetelex.php:162
 msgid "Search"
 msgstr "Zoeken"
 
-#: horsetelex.php:153
-msgid "Cancel"
-msgstr "Annuleren"
-
-#: horsetelex.php:157
-msgid "Add Link"
-msgstr "Link toevoegen"
-
-#: horsetelex.php:203
-msgid "Name"
-msgstr "Naam"
-
-#: horsetelex.php:204
+#: horsetelex.php:158 horsetelex.php:226
 msgid "Father"
 msgstr "Vader"
 
-#: horsetelex.php:205
+#: horsetelex.php:174
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: horsetelex.php:178
+msgid "Add Link"
+msgstr "Link toevoegen"
+
+#: horsetelex.php:225
+msgid "Name"
+msgstr "Naam"
+
+#: horsetelex.php:227
 msgid "Mother"
 msgstr "Moeder"
 
-#: horsetelex.php:206
+#: horsetelex.php:228
 msgid "Mothers father"
 msgstr "Moeders vader"
 
-#: horsetelex.php:207
+#: horsetelex.php:229
 msgid "Year"
 msgstr "Jaar"
 
-#~ msgctxt "post type general name"
+#. Plugin URI of the plugin/theme
+msgid "http://www.happywp.com/plugins/horsetelex/"
+msgstr "http://www.happywp.com/plugins/horsetelex/"
 
+#. Description of the plugin/theme
+msgid "Allow easily linking to Horsetelex pages."
+msgstr "Eenvoudig linken naar Horsetelex pagina's."
+
+#. Author of the plugin/theme
+msgid "Pronamic"
+msgstr "Pronamic"
+
+#. Author URI of the plugin/theme
+msgid "http://www.pronamic.eu/"
+msgstr "http://www.pronamic.nl/"
+
+#~ msgctxt "post type general name"
 #~ msgid "Companies"
 #~ msgstr "Bedrijven"
-#~ msgctxt "post type singular name"
 
+#~ msgctxt "post type singular name"
 #~ msgid "Company"
 #~ msgstr "Bedrijf"
-#~ msgctxt "company"
 
+#~ msgctxt "company"
 #~ msgid "Add New"
 #~ msgstr "Nieuwe toevoegen"
 
@@ -110,16 +124,16 @@ msgstr "Jaar"
 
 #~ msgid "Companies"
 #~ msgstr "Bedrijvengids"
-#~ msgctxt "slug"
 
+#~ msgctxt "slug"
 #~ msgid "companies"
 #~ msgstr "bedrijvengids"
-#~ msgctxt "category general name"
 
+#~ msgctxt "category general name"
 #~ msgid "Company Category"
 #~ msgstr "Bedrijf categorie"
-#~ msgctxt "category singular name"
 
+#~ msgctxt "category singular name"
 #~ msgid "Company Category"
 #~ msgstr "Bdrijf categorie"
 
@@ -149,16 +163,16 @@ msgstr "Jaar"
 
 #~ msgid "Categories"
 #~ msgstr "Categorieën"
-#~ msgctxt "slug"
 
+#~ msgctxt "slug"
 #~ msgid "company-category"
 #~ msgstr "bedrijfscategorie"
-#~ msgctxt "category general name"
 
+#~ msgctxt "category general name"
 #~ msgid "Company Character"
 #~ msgstr "Bedrijf karakter"
-#~ msgctxt "category singular name"
 
+#~ msgctxt "category singular name"
 #~ msgid "Company Character"
 #~ msgstr "Bedrijf karakter"
 
@@ -188,12 +202,12 @@ msgstr "Jaar"
 
 #~ msgid "Characters"
 #~ msgstr "Karakters"
-#~ msgctxt "category general name"
 
+#~ msgctxt "category general name"
 #~ msgid "Company Region"
 #~ msgstr "Bedrijf regio"
-#~ msgctxt "category singular name"
 
+#~ msgctxt "category singular name"
 #~ msgid "Company Region"
 #~ msgstr "Bedrijf regio"
 
@@ -292,12 +306,12 @@ msgstr "Jaar"
 
 #~ msgid "Author"
 #~ msgstr "Auteur"
-#~ msgctxt "post type general name"
 
+#~ msgctxt "post type general name"
 #~ msgid "Events"
 #~ msgstr "Evenementen"
-#~ msgctxt "post type singular name"
 
+#~ msgctxt "post type singular name"
 #~ msgid "Event"
 #~ msgstr "Evenement"
 
@@ -527,7 +541,6 @@ msgstr "Jaar"
 #~ msgstr "versie %s"
 
 #~ msgid "Configuration deleted."
-
 #~ msgid_plural "Configurations deleted."
 #~ msgstr[0] "Configuratie verwijderd."
 #~ msgstr[1] "Configuraties verwijderd."
@@ -753,7 +766,6 @@ msgstr "Jaar"
 #~ msgstr "iDEAL feeds"
 
 #~ msgid "Feed deleted."
-
 #~ msgid_plural "Feeds deleted."
 #~ msgstr[0] "Feed verwijderd."
 #~ msgstr[1] "Feeds verwijderd."
@@ -816,12 +828,12 @@ msgstr "Jaar"
 #~ "32 tekens zal automatisch worden afgekapt."
 
 #~ msgid ""
-#~ "Merge Tag Examples: Entry Id = <code>{entry_id}</code>, Form Id = <code>"
-#~ "{form_id}</code>, Form Title = <code>{form_title}</code>"
+#~ "Merge Tag Examples: Entry Id = <code>{entry_id}</code>, Form Id = "
+#~ "<code>{form_id}</code>, Form Title = <code>{form_title}</code>"
 #~ msgstr ""
 #~ "Samenvoegen tag voorbeelden: Inzending ID = <code>{entry_id}</code>, "
-#~ "Formulier ID = <code>{form_id}</code>, Formulier titel = <code>"
-#~ "{form_title}</code>"
+#~ "Formulier ID = <code>{form_id}</code>, Formulier titel = "
+#~ "<code>{form_title}</code>"
 
 #~ msgid "Options"
 #~ msgstr "Opties"
@@ -1189,8 +1201,8 @@ msgstr "Jaar"
 
 #~ msgid "View all categories"
 #~ msgstr "Bekijk alle categorieën"
-#~ msgctxt "link name"
 
+#~ msgctxt "link name"
 #~ msgid "Name"
 #~ msgstr "Naam"
 
@@ -1225,12 +1237,12 @@ msgstr "Jaar"
 
 #~ msgid "Custom URL:"
 #~ msgstr "Maatwerk URL:"
-#~ msgctxt "post type general name"
 
+#~ msgctxt "post type general name"
 #~ msgid "Blocks"
 #~ msgstr "Blokken"
-#~ msgctxt "post type singular name"
 
+#~ msgctxt "post type singular name"
 #~ msgid "Block"
 #~ msgstr "Blok"
 
@@ -1252,9 +1264,6 @@ msgstr "Jaar"
 #~ msgid "Blocks"
 #~ msgstr "Blokken"
 
-#~ msgid "http://pronamic.eu/"
-#~ msgstr "http://pronamic.nl/"
-
 #~ msgid "http://pronamic.eu/contact/"
 #~ msgstr "http://pronamic.nl/contact/"
 
@@ -1272,9 +1281,6 @@ msgstr "Jaar"
 
 #~ msgid "News"
 #~ msgstr "Nieuws"
-
-#~ msgid "Pronamic News"
-#~ msgstr "Pronamic nieuws"
 
 #~ msgid "Concept and realisation by %s"
 #~ msgstr "Concept en realisatie door %s"

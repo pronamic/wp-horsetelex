@@ -1,14 +1,14 @@
 <?php
 /*
 Plugin Name: Horsetelex
-Plugin URI: http://pronamic.eu/wp-plugins/horsetelex
+Plugin URI: http://www.happywp.com/plugins/horsetelex/
 Description: Allow easily linking to Horsetelex pages.
  
 Version: 0.1.1
 Requires at least: 3.0
 
 Author: Pronamic
-Author URI: http://pronamic.eu/
+Author URI: http://www.pronamic.eu/
 
 Text Domain: horsetelex
 Domain Path: /languages/

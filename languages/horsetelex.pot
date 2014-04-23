@@ -1,0 +1,81 @@
+# Copyright (C) 2014 Horsetelex
+# This file is distributed under the same license as the Horsetelex package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Horsetelex 0.1.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/horsetelex\n"
+"POT-Creation-Date: 2014-04-23 13:39:12+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#. Plugin Name of the plugin/theme
+msgid "Horsetelex"
+msgstr ""
+
+#: horsetelex.php:134
+msgid "Enter the destination URL"
+msgstr ""
+
+#: horsetelex.php:138
+msgid "URL"
+msgstr ""
+
+#: horsetelex.php:141
+msgid "Title"
+msgstr ""
+
+#: horsetelex.php:144
+msgid "Open link in a new window/tab"
+msgstr ""
+
+#: horsetelex.php:153 horsetelex.php:162
+msgid "Search"
+msgstr ""
+
+#: horsetelex.php:158 horsetelex.php:226
+msgid "Father"
+msgstr ""
+
+#: horsetelex.php:174
+msgid "Cancel"
+msgstr ""
+
+#: horsetelex.php:178
+msgid "Add Link"
+msgstr ""
+
+#: horsetelex.php:225
+msgid "Name"
+msgstr ""
+
+#: horsetelex.php:227
+msgid "Mother"
+msgstr ""
+
+#: horsetelex.php:228
+msgid "Mothers father"
+msgstr ""
+
+#: horsetelex.php:229
+msgid "Year"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.happywp.com/plugins/horsetelex/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Allow easily linking to Horsetelex pages."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Pronamic"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.pronamic.eu/"
+msgstr ""
