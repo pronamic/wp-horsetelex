@@ -14,6 +14,21 @@ module.exports = function( grunt ) {
 			all: [ '**/*.php' ]
 		},
 		
+		// PHP Code Sniffer
+		phpcs: {
+		    application: {
+		        dir: [ '**/*.php' ]
+		    },
+		    options: {
+		        standard: 'project.ruleset.xml'
+		    }
+		},
+
+		// JSHint
+		jshint: {
+			all: [ 'Gruntfile.js', 'package.json', 'js/admin.js', 'tinymce/horsetelex/editor_plugin.js' ]
+		},
+
 		// Check WordPress version
 		checkwpversion: {
 			options: {
@@ -45,10 +60,12 @@ module.exports = function( grunt ) {
 	} );
 
 	grunt.loadNpmTasks( 'grunt-phplint' );
+	grunt.loadNpmTasks( 'grunt-phpcs' );
+	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
 	grunt.loadNpmTasks( 'grunt-checkwpversion' );
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 
 	// Default task(s).
-	grunt.registerTask( 'default', [ 'phplint', 'checkwpversion' ] );
+	grunt.registerTask( 'default', [ 'phplint', 'phpcs', 'jshint', 'checkwpversion' ] );
 	grunt.registerTask( 'pot', [ 'makepot' ] );
 };

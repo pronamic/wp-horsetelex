@@ -3,7 +3,7 @@
 Plugin Name: Horsetelex
 Plugin URI: http://www.happywp.com/plugins/horsetelex/
 Description: Allow easily linking to Horsetelex pages.
- 
+
 Version: 0.1.1
 Requires at least: 3.0
 
@@ -17,13 +17,9 @@ License: GPL
 */
 
 function horsetelex_admin_enqueue_scripts(){
-	wp_enqueue_style( 'horsetelex', plugins_url( 'css/admin.css', __FILE__ ) );
+	wp_enqueue_style( 'horsetelex-link', plugins_url( 'css/horsetelex-link.css', __FILE__ ) );
 
-	wp_enqueue_script( 'horsetelex_link', plugins_url( 'js/admin.js', __FILE__ ) );
-
-	wp_enqueue_script( 'wpdialogs-popup' );
-
-	wp_enqueue_style( 'wp-jquery-ui-dialog' );
+	wp_enqueue_script( 'horsetelex-link', plugins_url( 'js/horsetelex-link.js', __FILE__ ), array( 'jquery' ), '1.0.0' );
 }
 
 add_action( 'admin_enqueue_scripts', 'horsetelex_admin_enqueue_scripts' );
@@ -48,29 +44,31 @@ function horsetelex_management_page() {
 		</h2>
 
 		<?php 
-		
+
 		$url = sprintf( 'http://%s/horses/jsonsearch', horsetelex_get_host_name() );
 
 		$response = wp_remote_post( $url, array(
-			'body' => array( 
-				'names'    => 'Totilas', // Naam 
+			'body' => array(
+				'names'    => 'Totilas', // Naam
 				's'        => '', // Vader
 				'd'        => '', // Moeder
 				'ds'       => '', // Moeders vader
 				'reg'      => '', // Stamboek nummer
 				'year'     => '', // Jaar
-				'studbook' => '' // Stamboek
+				'studbook' => '', // Stamboek
 			),
 		) );
 
 		if ( is_wp_error( $response ) ) {
 			echo 'Something went wrong!';
-		} else {		
+		} else {
 			$body = $response['body'];
 
 			$data = json_decode( $body );
 
+			// @codingStandardsIgnoreStart
 			var_dump( $data );
+			// @codingStandardsIgnoreEnd
 		}
 
 		?>
@@ -79,12 +77,12 @@ function horsetelex_management_page() {
 }
 
 function horsetelex_admin_menu() {
-	add_management_page( 
-		__( 'Horsetelex' , 'horsetelex' ) , // page_title
-		__( 'Horsetelex' , 'horsetelex' ) , // menu_title
-		'read' , // capability  
-		'horsetelex' , // menu_slug
-		'horsetelex_management_page'  //  function
+	add_management_page(
+		__( 'Horsetelex' , 'horsetelex' ), // page_title
+		__( 'Horsetelex' , 'horsetelex' ), // menu_title
+		'read', // capability
+		'horsetelex', // menu_slug
+		'horsetelex_management_page' //  function
 	);
 }
 
@@ -96,23 +94,24 @@ function horsetelex_init() {
 	load_plugin_textdomain( 'horsetelex', false, $rel_path );
 
 	// Don't bother doing this stuff if the current user lacks permissions
-	if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) )
+	if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) ) {
 		return;
- 
+	}
+
 	// Add only in Rich Editor mode
 	if ( get_user_option( 'rich_editing' ) == 'true' ) {
 		add_filter( 'mce_external_plugins', 'horsetelex_tinymce_plugin' );
 		add_filter( 'mce_buttons', 'horsetelex_mce_buttons' );
-   }
+	}
 }
- 
-function horsetelex_mce_buttons($buttons) {
+
+function horsetelex_mce_buttons( $buttons ) {
 	array_push( $buttons, 'separator', 'horsetelex' );
 
 	return $buttons;
 }
- 
-function horsetelex_tinymce_plugin($plugin_array) {
+
+function horsetelex_tinymce_plugin( $plugin_array ) {
 	$plugin_array['horsetelex'] = plugins_url( 'tinymce/horsetelex/editor_plugin.js', __FILE__ );
 
 	return $plugin_array;
@@ -122,25 +121,37 @@ add_action( 'init', 'horsetelex_init' );
 
 //
 
+/**
+ * Horsetelex link dialog
+ * 
+ * @see https://github.com/WordPress/WordPress/blob/3.9/wp-includes/class-wp-editor.php#L1377
+ */
 function horsetelex_link_dialog() {
 	?>
-	<div style="display:none;">
+	<div id="horsetelex-link-backdrop" style="display: none"></div>
+
+	<div id="horsetelex-link-wrap" class="wp-core-ui" style="display:none;">
 		<form id="horsetelex-link" tabindex="-1">
 			<?php wp_nonce_field( 'internal-linking', '_ajax_linking_nonce', false ); ?>
+
+			<div id="horsetelex-link-modal-title">
+				<?php _e( 'Insert/edit Horsetelex link', 'horsetelex' ) ?>
+				<div id="horsetelex-link-close" tabindex="0"></div>
+			</div>
 
 			<div id="horsetelex-selector">
 				<div id="horsetelex-options">
 					<p class="howto">
-						<?php _e( 'Enter the destination URL' ); ?>
+						<?php _e( 'Enter the destination URL', 'horsetelex' ); ?>
 					</p>
 
 					<div>
-						<label><span><?php _e( 'URL' ); ?></span><input id="horsetelex-url-field" type="text" tabindex="10" name="href" /></label>
+						<label><span><?php _e( 'URL', 'horsetelex' ); ?></span><input id="horsetelex-url-field" type="text" tabindex="10" name="href" /></label>
 					</div>
 					<div>
-						<label><span><?php _e( 'Title' ); ?></span><input id="horsetelex-title-field" type="text" tabindex="20" name="linktitle" /></label>
+						<label><span><?php _e( 'Title', 'horsetelex' ); ?></span><input id="horsetelex-title-field" type="text" tabindex="20" name="linktitle" /></label>
 					</div>
-					<div class="horsetelex-target">
+					<div class="link-target">
 						<label><input type="checkbox" id="horsetelex-target-checkbox" tabindex="30" checked="checked" /> <?php _e( 'Open link in a new window/tab' ); ?></label>
 					</div>
 				</div>
@@ -161,7 +172,7 @@ function horsetelex_link_dialog() {
 
 						<input type="submit" value="<?php esc_attr_e( 'Search' ); ?>" class="button-secondary" id="horsetelex-search-submit" name="horsetelex-search-submit" />
 
-						<img class="waiting" src="<?php echo esc_url( admin_url( 'images/wpspin_light.gif' ) ); ?>" alt="" />
+						<span class="spinner"></span>
 					</div>
 					<div id="horsetelex-search-results" class="query-results">
 						
@@ -170,12 +181,12 @@ function horsetelex_link_dialog() {
 			</div>
 
 			<div class="submitbox">
-				<div id="horsetelex-link-cancel">
-					<a class="submitdelete deletion" href="#"><?php _e( 'Cancel' ); ?></a>
-				</div>
-
 				<div id="horsetelex-link-update">
 					<input type="submit" tabindex="100" value="<?php esc_attr_e( 'Add Link' ); ?>" class="button-primary" id="horsetelex-link-submit" name="horsetelex-link-submit">
+				</div>
+
+				<div id="horsetelex-link-cancel">
+					<a class="submitdelete deletion" href="#"><?php _e( 'Cancel' ); ?></a>
 				</div>
 			</div>
 		</form>
@@ -195,29 +206,29 @@ function horsetelex_wp_ajax_search() {
 	$names = filter_input( INPUT_POST, 'name', FILTER_SANITIZE_STRING );
 	$father = filter_input( INPUT_POST, 'father', FILTER_SANITIZE_STRING );
 
-	$response = wp_remote_post($url, array(
-		'body' => array( 
-			'names'    => $names, // Naam 
+	$response = wp_remote_post( $url, array(
+		'body' => array(
+			'names'    => $names, // Naam
 			's'        => $father, // Vader
 			'd'        => '', // Moeder
 			'ds'       => '', // Moeders vader
 			'reg'      => '', // Stamboek nummer
 			'year'     => '', // Jaar
-			'studbook' => '', // Stamboek 
-			'page'     => '0' 
+			'studbook' => '', // Stamboek
+			'page'     => '0',
 		),
-	));
+	) );
 
 	if ( is_wp_error( $response ) ) {
 		echo 'Something went wrong!';
-	} else {		
+	} else {
 		$body = $response['body'];
 
-		$data = json_decode($body);
+		$data = json_decode( $body );
 
 		if ( is_array( $data ) ) {
 			array_shift( $data );
-	
+
 			?>
 			<table>
 				<thead>
@@ -237,28 +248,28 @@ function horsetelex_wp_ajax_search() {
 
 						<tr>
 							<?php 
-							
+
 							$url = sprintf(
 								'http://%s/horses/pedigree/%s',
 								horsetelex_get_host_name(),
 								$row->id
 							);
-							
+
 							?>
 							<td>
-								<a href="<?php echo $url; ?>"><?php echo $row->name; ?></a>
+								<a href="<?php echo esc_attr( $url ); ?>"><?php echo esc_html( $row->name ); ?></a>
 							</td>
 							<td>
-								 <?php echo $row->s_name; ?>
+								 <?php echo esc_html( $row->s_name ); ?>
 							</td>
 							<td>
-								 <?php echo $row->d_name; ?>
+								 <?php echo esc_html( $row->d_name ); ?>
 							</td>
 							<td>
-								 <?php echo $row->ds_name; ?>
+								 <?php echo esc_html( $row->ds_name ); ?>
 							</td>
 							<td>
-								 <?php echo $row->year; ?>
+								 <?php echo esc_html( $row->year ); ?>
 							</td>
 						</tr>
 
@@ -273,4 +284,4 @@ function horsetelex_wp_ajax_search() {
 	wp_die();
 }
 
-add_action('wp_ajax_horsetelex_search', 'horsetelex_wp_ajax_search');
+add_action( 'wp_ajax_horsetelex_search', 'horsetelex_wp_ajax_search' );
