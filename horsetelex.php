@@ -4,7 +4,7 @@ Plugin Name: Horsetelex
 Plugin URI: http://www.happywp.com/plugins/horsetelex/
 Description: Allow easily linking to Horsetelex pages.
 
-Version: 0.1.1
+Version: 1.0.0
 Requires at least: 3.0
 
 Author: Pronamic
