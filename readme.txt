@@ -2,8 +2,8 @@
 Contributors: pronamic, remcotolsma 
 Tags: horses, horsetelex
 Requires at least: 3.0
-Tested up to: 3.4.1
-Stable tag: 0.1.1
+Tested up to: 3.9
+Stable tag: 1.0.0
 
 Allow easily linking to Horsetelex pages.
 
@@ -18,6 +18,9 @@ WordPress installation and then activate the Plugin from Plugins page.
 
 
 == Changelog ==
+
+= 1.0.0 =
+*	Update for [TinyMCE 4.0](http://make.wordpress.org/core/2014/01/18/tinymce-4-0-is-in-core/) WordPress 3.9.
 
 = 0.1.1 =
 *	Open Horsetelex links by default in a new window/tab.
